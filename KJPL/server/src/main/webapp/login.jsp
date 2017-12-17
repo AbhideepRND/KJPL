@@ -1,3 +1,9 @@
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib  uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,14 +15,14 @@
   <meta name="author" content="">
   <title>Kanknarrah Jute Pvt. Ltd</title>
   <!-- Bootstrap core CSS-->
-  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<c:url value='/static/bootstrap/css/bootstrap.min.css' />"  rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="/static/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="<c:url value='/static/bootstrap/font-awesome/css/font-awesome.min.css' />"  rel="stylesheet" type="text/css">
   <!-- Jquery Css-->
-  <link href="/static/css/jquery/jquery-ui.css" rel="stylesheet">
-  <link href="/static/css/jquery/style.css" rel="stylesheet">
+  <link href="<c:url value='/static/css/jquery/jquery-ui.css' />"  rel="stylesheet">
+  <link href="<c:url value='/static/css/jquery/style.css' />"   rel="stylesheet">
   <!-- Custom styles for this template-->
-  <link href="/static/css/sb-admin.css" rel="stylesheet">
+  <link href="<c:url value='/static/css/sb-admin.css' />" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -49,10 +55,10 @@
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
- 	<script src="/static/js/jquery/jquery.min.js"></script>
-    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 	<script src="/js/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
-  	 <script src="/static/js/jquery-easing/jquery.easing.min.js"></script>
+  	 <script src="/js/jquery-easing/jquery.easing.min.js"></script>
 </body>
 
 </html>

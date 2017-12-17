@@ -10,11 +10,11 @@
   <meta name="author" content="">
   <title>Kanknarrah Jute Pvt. Ltd</title>
   <!-- Bootstrap core CSS-->
-  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/static/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="/css/sb-admin.css" rel="stylesheet">
+  <link href="/static/css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -24,12 +24,12 @@
 	<tiles:insertAttribute name="footer" />    
 
  <!-- Bootstrap core JavaScript-->
-    <script src="/js/jquery/jquery.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/jquery/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="/js/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/static/js/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="/js/app/sb-admin.min.js"></script>
+    <script src="/static/js/app/sb-admin.min.js"></script>
   </div>
 </body>
 
