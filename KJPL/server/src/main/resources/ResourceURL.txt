@@ -1,0 +1,9 @@
+http://java-journal.blogspot.in/2012/08/what-is-applicationcontext-what-are-its.html
+http://joshlong.com/jl/blogPost/simplified_web_configuration_with_spring.html
+https://dzone.com/articles/spring-1
+https://samerabdelkafi.wordpress.com/2014/08/03/spring-mvc-full-java-based-config/
+
+https://www.programcreek.com/java-api-examples/index.php?api=org.springframework.boot.builder.SpringApplicationBuilder
+http://www.devglan.com/spring-boot/spring-boot-mvc-apache-tiles-example
+
+http://crunchify.com/spring-mvc-4-2-2-best-way-to-integrate-js-and-css-file-in-jsp-file-using-mvcresources-mapping/
