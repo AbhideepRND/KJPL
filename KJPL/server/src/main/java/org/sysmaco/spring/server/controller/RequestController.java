@@ -8,14 +8,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class RequestController {
 
-	@RequestMapping(value="/dashboard", method=RequestMethod.GET)
-	public String getLoginScreen(){
-		return "dashboard";
-	}
 	
 	@RequestMapping(value="/")
 	public String home(){
 		return "login";
+	}
+	
+	
+	@RequestMapping(value="/dashboard", method=RequestMethod.GET)
+	public String getDashBoard(){
+		return "dashboard";
+	}
+	
+	
+	@RequestMapping(value="/DepartmentMaster", method=RequestMethod.GET)
+	public String getDepartmentMaster(){
+		return "DepartmentMaster";
+	}
+	
+	@RequestMapping(value="/RateEntry", method=RequestMethod.GET)
+	public String getRateEntry(){
+		return "RateEntry";
+	}
+	
+	@RequestMapping(value="/DailyHands", method=RequestMethod.GET)
+	public String getDailyHands(){
+		return "DailyHands";
+	}
+	
+	@RequestMapping(value="/ViewHands", method=RequestMethod.GET)
+	public String getViewHands(){
+		return "ViewHands";
 	}
 	
 }

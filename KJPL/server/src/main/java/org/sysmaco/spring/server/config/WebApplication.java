@@ -52,7 +52,7 @@ public class WebApplication implements WebApplicationInitializer{
         // Register and map the dispatcher servlet
         ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(dispatcherServlet));
         servlet.setLoadOnStartup(1);
-        servlet.addMapping("/");
+        servlet.addMapping("*.html");
 		
 	}
 

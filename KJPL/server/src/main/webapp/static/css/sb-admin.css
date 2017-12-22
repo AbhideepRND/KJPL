@@ -329,6 +329,16 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 .card-register {
   max-width: 40rem; }
 
+.date-field {
+  max-width: 10rem;
+}
+
+.line{
+  width: 100%;
+  height: .021px;
+  border-bottom: 1px solid black;
+  }
+
 footer.sticky-footer {
   position: absolute;
   right: 0;
@@ -344,3 +354,19 @@ footer.sticky-footer {
 @media (min-width: 992px) {
   body.sidenav-toggled footer.sticky-footer {
     width: calc(100% - 55px); } }
+
+table.table-expandable > tbody > tr:nth-child(odd) {
+  cursor: pointer;
+}
+  
+table.table-expandable.table-hover > tbody > tr:nth-child(even):hover td {
+    background-color: white;
+}
+
+table.table-expandable > tbody > tr div.table-expandable-arrow {
+    background:transparent url(/static/img/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;
+}
+
+table.table-expandable > tbody > tr div.table-expandable-arrow.up {
+    background-position:0px 0px;
+}

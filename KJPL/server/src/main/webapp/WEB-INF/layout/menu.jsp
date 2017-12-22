@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="dashboard.html">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -18,14 +18,17 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="#">Department Master</a>
+              <a href="DepartmentMaster.html">Department Master</a>
             </li>
             <li>
-              <a href="#">Daily Hands Entry</a>
+              <a href="RateEntry.html">Rate Entry</a>
             </li>
             <li>
-                <a href="#">Hands Report</a>
-              </li>
+              <a href="DailyHands.html">Daily Hands Entry</a>
+            </li>
+            <li>
+              <a href="ViewHands.html">View Daily Hands</a>
+            </li>
           </ul>
         </li>
       </ul>

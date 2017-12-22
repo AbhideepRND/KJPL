@@ -15,5 +15,21 @@
 	<definition name="dashboard" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/applicationPages/dashboard.jsp" />
 	</definition>
+	
+	<definition name="DepartmentMaster" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/applicationPages/DepartmentMaster.jsp" />
+	</definition>
+	
+	<definition name="RateEntry" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/applicationPages/RateEntry.jsp" />
+	</definition>
+	
+	<definition name="DailyHands" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/applicationPages/DailyHands.jsp" />
+	</definition>
+	
+	<definition name="ViewHands" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/applicationPages/ViewHands.jsp" />
+	</definition>
 
 </tiles-definitions>
