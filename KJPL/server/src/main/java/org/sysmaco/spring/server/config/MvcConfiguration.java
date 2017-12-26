@@ -31,7 +31,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"org.sysmaco.spring.server"})
+@ComponentScan(basePackages = {"org.sysmaco.spring.server","org.sysmaco.spring.service"})
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
 	/**

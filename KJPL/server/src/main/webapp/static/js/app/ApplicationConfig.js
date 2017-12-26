@@ -15,9 +15,13 @@ var requestObject = {
                      },
                      appURL:{
                      	RateEntry:{
-                     		'save':'/server/rateEntry/save.json',
-                     		'update':'/server/rateEntry/update.json',
+                     		'save':'/rateEntry/save.json',
+                     		'update':'/rateEntry/update.json',
                      	}	
+                     },
+                     methodType:{
+                    	 POST:'post',
+                    	 GET:'get'
                      },
                      requestData:null,
                      error:[],
@@ -44,12 +48,18 @@ var requestObject = {
                     		    type: methodType,
                     		    contentType: 'application/json',
                     		    data: jsonData,
-                    		    processData: false,
+                    		    async : false,
                     		    success: function( data, textStatus, jQxhr ){
-                    		        $('#response pre').html( JSON.stringify( data ) );
+                    		    	if(data.error !== null){
+                    		    		alert(data.error);
+                    		    		return false;
+                    		    	} else{
+                    		    		alert(data.success);
+                    		    	}
+                    		        return data.payload;
                     		    },
                     		    error: function( jqXhr, textStatus, errorThrown ){
-                    		        console.log( errorThrown );
+                    		    	alert(jqXhr.responseJSON.status + ": Please contact system administrator");
                     		    }
                     		});
                      }

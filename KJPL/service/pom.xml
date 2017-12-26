@@ -8,10 +8,10 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>com.sysmaco.spring</groupId>
-  <artifactId>server</artifactId>
+  <artifactId>service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>server</name>
-  <packaging>war</packaging>
+  <name>service</name>
+  <packaging>jar</packaging>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,11 +22,6 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.sysmaco.spring</groupId>
-    	<artifactId>service</artifactId>
-    	<version>${project.parent.version}</version>
     </dependency>
   </dependencies>
 </project>

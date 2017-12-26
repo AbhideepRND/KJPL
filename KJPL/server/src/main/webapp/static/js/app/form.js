@@ -49,27 +49,39 @@ $(document).ready(function(){
 
        }
 
+       
 
-       // Rate entry Form 
+//  ******************************   Rate entry Form    ***************************************
        $('#RateEntry #submit').on('click', function(){
+    	   
+    	   $('#RateEntry #entryDateDiv').show();
+    	   $('#RateEntry #updateDateDiv').hide();
     	   var rateEntryDate =$('#RateEntry #entryDate').val();
-    	   /*if(rateEntryDate === '' || rateEntryDate === 'undefined'){
+    	   if(rateEntryDate === '' || rateEntryDate === 'undefined'){
     		   alert(requestObject.formMessage.error['Date']);
     		   return false;
-    	   }*/
+    	   }
     	   
     	   var json={};
     	   console.log($('#RateEntry-FormBody :input[type=text]').length);
     	   $('#RateEntry-FormBody :input[type=text]').each(function(index,data){
     		   json[$(data).attr('name')]=$(data).val();
     	   })
-    	   console.log(JSON.stringify(json));
     	   
-    	   
+    	   requestObject.call(requestObject.methodType.POST, requestObject.appURL.RateEntry['save'], JSON.stringify(json))
     	   
        })
        
+       $('#RateEntry #query').on('click', function(){
+    	   $('#RateEntry #updateDateDiv').show();
+    	   $('#RateEntry #entryDateDiv').hide();
+       })
        
+        $('#RateEntry #cancel').on('click', function(){
+    	   $('#RateEntry #updateDateDiv').hide();
+    	   $('#RateEntry #entryDateDiv').show();
+    	   
+       })
        
     });
 

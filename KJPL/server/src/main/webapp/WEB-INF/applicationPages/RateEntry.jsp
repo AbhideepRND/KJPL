@@ -7,10 +7,18 @@
           <h1>Rate Entry</h1>
           <p>Here you can add the rate of employees type</p>
           <div class="form-group" id="RateEntry">
+          	<form action="#">
               <div class="form-row">
               <div class="row" style="margin-bottom:5px;">
-		        <div class="col-4 col-sm-4 col-md-4">Date :-</div>
-		        <div class="col-6 col-sm-6 col-md-6"><input class="form-control" id="entryDate" name="entryDate" type="text"></div>
+		        <div class="col-4 col-sm-4 col-md-5">Date :-</div>
+		        <div class="col-6 col-sm-6 col-md-6" id="entryDateDiv">
+		        		<input class="form-control" id="entryDate" name="entryDate" type="text">
+		        </div>
+		         <div class="col-6 col-sm-6 col-md-6" id="updateDateDiv">
+		         	<select class="form-control" id="updateEntryDate" width=75 name="entryDate">
+                        <option value=""></option>
+                      </select> 
+                  </div>
 		      </div>
 		      
                 <table id="RateEntry-FormBody" class="table table-inverse" >
@@ -56,9 +64,10 @@
 	            <div class="row">
 	            	<div class="col-1 col-sm-2 col-md-4"><button class="btn btn-success btn-lg btn-block" type="button" id="submit" data-dismiss="modal">Save</button></div>
 	            	<div class="col-1 col-sm-2 col-md-4"><button class="btn btn-info btn-lg btn-block" type="button" id="query" data-dismiss="modal">Query</button></div>
-	            	<div class="col-1 col-sm-2 col-md-4"><button class="btn btn-danger btn-lg btn-block" type="button" id="cancel" data-dismiss="modal">Cancel</button></div>
+	            	<div class="col-1 col-sm-2 col-md-4"><button class="btn btn-danger btn-lg btn-block" type="reset" id="cancel" data-dismiss="modal">Cancel</button></div>
 	            </div>
               </div>
+              </form>
           </div>
         </div>
       </div>

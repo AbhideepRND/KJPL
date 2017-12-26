@@ -53,6 +53,7 @@ public class WebApplication implements WebApplicationInitializer{
         ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(dispatcherServlet));
         servlet.setLoadOnStartup(1);
         servlet.addMapping("*.html");
+        servlet.addMapping("*.json");
 		
 	}
 
