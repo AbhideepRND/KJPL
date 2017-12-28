@@ -67,9 +67,10 @@ $(document).ready(function(){
     	   $('#RateEntry-FormBody :input[type=text]').each(function(index,data){
     		   json[$(data).attr('name')]=$(data).val();
     	   })
-    	   
-    	   requestObject.call(requestObject.methodType.POST, requestObject.appURL.RateEntry['save'], JSON.stringify(json))
-    	   
+    	   json[$('#entryDate').attr('name')]=$('#entryDate').val();
+           console.log(json);
+           var payload = requestObject.call(requestObject.methodType.POST, requestObject.appURL.RateEntry['save'], JSON.stringify(json))
+           console.log(payload);
        })
        
        $('#RateEntry #query').on('click', function(){

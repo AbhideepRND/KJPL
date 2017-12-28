@@ -53,9 +53,11 @@ var requestObject = {
                     		    	if(data.error !== null){
                     		    		alert(data.error);
                     		    		return false;
-                    		    	} else{
-                    		    		alert(data.success);
-                    		    	}
+                    		    	}  else{
+                                        alert(data.success);
+                                        returnPayload =data.payload;
+                                        return true;
+                                 }
                     		        return data.payload;
                     		    },
                     		    error: function( jqXhr, textStatus, errorThrown ){

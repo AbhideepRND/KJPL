@@ -3,13 +3,16 @@ package org.sysmaco.spring.service.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-public class RateEntryDto implements Serializable {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class RateEntryDto extends GenericDto implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2344604345015042580L;
 	
+	@JsonFormat(pattern="dd/mm/yyyy")
 	private Date entryDate;
 	private Double permanent;
 	private Double specialBadly;
