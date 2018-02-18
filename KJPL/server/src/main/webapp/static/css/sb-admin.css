@@ -374,3 +374,7 @@ table.table-expandable > tbody > tr div.table-expandable-arrow.up {
 #updateDateDiv {
 	display:none;
 }
+
+#updateDeptDiv {
+	display:none;
+}

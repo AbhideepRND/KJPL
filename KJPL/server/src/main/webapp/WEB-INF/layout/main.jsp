@@ -18,6 +18,7 @@
   <link href="/static/css/jquery/style.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="/static/css/sb-admin.css" rel="stylesheet">
+  <script src="/static/js/app/ApplicationConfig.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -36,7 +37,7 @@
     <!-- Jquery ui -->
     <script src="/static/js/jquery/jquery-ui.js"></script>
     <script src="/static/js/app/form.js"></script>
-    <script src="/static/js/app/ApplicationConfig.js"></script>
+    
     
   </div>
 </body>

@@ -7,7 +7,10 @@ var requestObject = {
                      },
                      formMessage:{
                     	 error:{
-                    		 'Date': 'Date cannot be blank'
+                    		 'Date': 'Date cannot be blank',
+                    		 'DateQuery': 'Please select the correct date',
+                    		 'DeptCode':'Department code should be number only',
+                    		 'Operation':'Operation is wrong'
                     	 },
                     	 success:{
                     		 'success':'Saved Data'
@@ -17,13 +20,26 @@ var requestObject = {
                      	RateEntry:{
                      		'save':'/rateEntry/save.json',
                      		'update':'/rateEntry/update.json',
+                     		'queryAll':'/rateEntry/queryAll.json'
+                     	},
+                     	DepartmentURL:{
+                     		'save':'/departmentEntry/save.json',
+                     		'update':'/departmentEntry/update.json',
+                     		'queryAll':'/departmentEntry/queryAll.json'
                      	}	
                      },
                      methodType:{
                     	 POST:'post',
                     	 GET:'get'
                      },
+                     operationType:{
+                    	 SAVE:'save',
+                    	 UPDATE:'update',
+                    	 QUERY:'queryAll',
+                    	 CANCEL:'cancel'
+                     },                     
                      requestData:null,
+                     operationName:null,
                      error:[],
                      init:function(requestData, error){
                            this.requestData = requestData;
@@ -41,7 +57,9 @@ var requestObject = {
                      applyRegex:function(regexName, value){
                            return this.formRegex[regexName].test(value)
                      },
+                     responseData:null,
                      call:function(methodType, appurl, jsonData){
+                    	 var returnPayload="";
                     	 $.ajax({
                     		    url: appurl,
                     		    dataType: 'json',
@@ -55,15 +73,15 @@ var requestObject = {
                     		    		return false;
                     		    	}  else{
                                         alert(data.success);
-                                        returnPayload =data.payload;
+                                        requestObject.responseData =data.payload;
                                         return true;
                                  }
-                    		        return data.payload;
                     		    },
                     		    error: function( jqXhr, textStatus, errorThrown ){
                     		    	alert(jqXhr.responseJSON.status + ": Please contact system administrator");
                     		    }
                     		});
+                    	 return requestObject.responseData;
                      }
                      
        };

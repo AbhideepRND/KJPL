@@ -7,7 +7,7 @@
           <h1>Rate Entry</h1>
           <p>Here you can add the rate of employees type</p>
           <div class="form-group" id="RateEntry">
-          	<form action="#">
+          	<form action="#" id="FormRateEntry">
               <div class="form-row">
               <div class="row" style="margin-bottom:5px;">
 		        <div class="col-4 col-sm-4 col-md-5">Date :-</div>
@@ -15,7 +15,7 @@
 		        		<input class="form-control" id="entryDate" name="entryDate" type="text">
 		        </div>
 		         <div class="col-6 col-sm-6 col-md-6" id="updateDateDiv">
-		         	<select class="form-control" id="updateEntryDate" width=75 name="entryDate">
+		         	<select class="form-control" id="updateEntryDate" name="entryDate">
                         <option value=""></option>
                       </select> 
                   </div>
@@ -73,3 +73,6 @@
       </div>
     </div>
   </div>
+<script type="text/javascript">
+requestObject.operationName=requestObject.operationType.SAVE;
+</script>

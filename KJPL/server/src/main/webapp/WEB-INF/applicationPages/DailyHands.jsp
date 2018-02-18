@@ -14,18 +14,14 @@
                   <th></th>
                   <th>Production (In M/T)</th>
                   <th>
-                      <input class="form-control" type="text" placeholder="Add Production Data">
+                      <input class="form-control" type="text" placeholder="Add Production Data" name="production" id="production">
                   </th>
                   <th></th>
                 </tr>
                 <tr>
                   <th>Dept-Code</th>
                   <th>
-                      <select class="form-control" id="departmentCode">
-                        <option value="0212">Batching Fine unit (0012)</option>
-                        <option value="0212">Batching Fine unit (0012)</option>
-                        <option value="0212">Batching Fine unit(0012)</option>
-                        <option value="0212">Batching Fine unit (0012)</option>
+                      <select class="form-control" id="deptCode" name="deptCode">
                       </select> 
                   </th>
                   <th>Unit</th>
@@ -38,10 +34,10 @@
                   <th colspan="2"><input class="form-control" type="text" readonly></th>
                   <th>Entry Type</th>
                   <th colspan="2">
-                       <select class="form-control" id="departmentCode">
+                       <select class="form-control" id="entryType" nam="entryType">
                         <option value="P">Normal Hours</option>
                         <option value="O">Over Time</option>
-                        <option value="R">Day Off</option>
+                        <option value="D">Day Off</option>
                         <option value="A">Additional O.T</option>
                       </select> 
                   </th>

@@ -18,6 +18,7 @@ public class Rate implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "CURR_DATE")
 	private Date currDate;
+
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "rate_id")
 	@Id

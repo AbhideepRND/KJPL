@@ -3,6 +3,10 @@ package org.sysmaco.spring.service.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class RateEntryDto extends GenericDto implements Serializable {
@@ -12,7 +16,9 @@ public class RateEntryDto extends GenericDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 2344604345015042580L;
 	
-	@JsonFormat(pattern="dd/mm/yyyy")
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date entryDate;
 	private Double permanent;
 	private Double specialBadly;
@@ -32,6 +38,7 @@ public class RateEntryDto extends GenericDto implements Serializable {
 		this.voucherRet = voucherRet;
 	}
 
+	//@JsonFormat(pattern="dd/MM/yyyy", shape=JsonFormat.Shape.STRING)
 	public Date getEntryDate() {
 		return entryDate;
 	}

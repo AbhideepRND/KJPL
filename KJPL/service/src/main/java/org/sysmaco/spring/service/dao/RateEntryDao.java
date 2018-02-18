@@ -6,4 +6,7 @@ import org.sysmaco.spring.service.entity.Rate;
 
 @Repository
 public interface RateEntryDao extends JpaRepository<Rate, Integer> {
+	
+	public Rate findByRateID(Integer rateId);
+
 }

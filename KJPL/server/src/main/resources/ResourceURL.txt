@@ -8,3 +8,7 @@ http://crunchify.com/spring-mvc-4-2-2-best-way-to-integrate-js-and-css-file-in-j
 https://www.mkyong.com/spring-boot/spring-boot-spring-data-elasticsearch-example/
 https://stackoverflow.com/questions/45663025/spring-data-jpa-multiple-enablejparepositories
 https://www.concretepage.com/spring-boot/spring-boot-security-rest-jpa-hibernate-mysql-crud-example
+
+
+Error Handling
+http://www.baeldung.com/exception-handling-for-rest-with-spring

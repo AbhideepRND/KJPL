@@ -1,5 +1,8 @@
 package org.sysmaco.spring.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -30,4 +33,51 @@ public class RateEntryService {
 		rateDto.setId(rate.getRateId());
 		return rateDto;
 	}
+	
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public RateEntryDto updateData(RateEntryDto rateDto) {
+		Rate rate = rateDao.findByRateID(rateDto.getId());
+		rate.setCurrDate(rateDto.getEntryDate());
+		rate.setLearner(rateDto.getLearner());
+		rate.setPermanent(rateDto.getPermanent());
+		rate.setSpecialBadly(rateDto.getSpecialBadly());
+		rate.setBadly(rateDto.getBadly());
+		rate.setNewEntrance(rateDto.getNewEntrance());
+		rate.setOtherMill(rateDto.getOtherMill());
+		rate.setOutsider(rateDto.getOutsider());
+		rate.setSemiSkilled(rateDto.getSemiSkilled());
+		rate.setVoucher(rateDto.getVoucherRet());
+		rateDao.save(rate);
+		return rateDto;
+	}
+	
+	public RateEntryDto serachById(final Integer rateId) {
+		return convertToRateEntry(rateDao.findByRateID(rateId));
+	}
+	
+	public List<RateEntryDto> serachAllDateList() {
+		final List<Rate> findAll = rateDao.findAll();
+		List<RateEntryDto> rateEntryDtoList = new ArrayList<RateEntryDto>();
+		findAll.forEach(rate -> {
+			rateEntryDtoList.add(convertToRateEntry(rate));
+		});
+		return rateEntryDtoList;
+	}
+	
+	private RateEntryDto convertToRateEntry(final Rate rate){
+		RateEntryDto rateEntryDto = new RateEntryDto();
+		rateEntryDto.setId(rate.getRateId());
+		rateEntryDto.setEntryDate(rate.getCurrDate());
+		rateEntryDto.setLearner(rate.getLearner());
+		rateEntryDto.setPermanent(rate.getPermanent());
+		rateEntryDto.setSpecialBadly(rate.getSpecialBadly());
+		rateEntryDto.setBadly(rate.getBadly());
+		rateEntryDto.setNewEntrance(rate.getNewEntrance());
+		rateEntryDto.setOtherMill(rate.getOtherMill());
+		rateEntryDto.setOutsider(rate.getOutsider());
+		rateEntryDto.setSemiSkilled(rate.getSemiSkilled());
+		rateEntryDto.setVoucherRet(rate.getVoucher());
+		return rateEntryDto;
+	}
+	
 }
