@@ -2,6 +2,8 @@ package org.sysmaco.spring.service.restcontroller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +24,8 @@ public class DepartmentMasterController {
 	private DepartmentMasterService departmentService;
 
 	@RequestMapping(value = "/queryAll", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<MessageResponse<List<DepartmentDto>>> queryAll() {
-		List<DepartmentDto> serachAllDateList = departmentService.serachAllDateList();
+	public ResponseEntity<MessageResponse<List<DepartmentDto>>> queryAll(@PathParam("category") String category) {
+		List<DepartmentDto> serachAllDateList = departmentService.serachAllDateList(category);
 		MessageResponse<List<DepartmentDto>> messageResponse = new MessageResponse<List<DepartmentDto>>();
 		messageResponse.setPayload(serachAllDateList);
 		messageResponse.addSuccess("Success Full");

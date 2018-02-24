@@ -75,4 +75,5 @@
   </div>
 <script type="text/javascript">
 requestObject.operationName=requestObject.operationType.SAVE;
+requestObject.activePage=requestObject.pageNameList.Rate;
 </script>

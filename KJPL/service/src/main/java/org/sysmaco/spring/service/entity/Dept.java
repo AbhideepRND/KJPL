@@ -3,6 +3,7 @@ package org.sysmaco.spring.service.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,11 +30,11 @@ public class Dept implements Serializable {
 	private String unit;
 
 	//bi-directional many-to-one association to DailyHand
-	@OneToMany(mappedBy="dept")
+	@OneToMany(mappedBy="dept", cascade=CascadeType.ALL)
 	private List<DailyHand> dailyHands;
 
 	//bi-directional many-to-one association to SingleHand
-	@OneToMany(mappedBy="dept")
+	@OneToMany(mappedBy="dept", cascade=CascadeType.ALL)
 	private List<SingleHand> singleHands;
 	
 	public Dept() {

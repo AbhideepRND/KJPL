@@ -31,5 +31,9 @@
 	<definition name="ViewHands" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/applicationPages/ViewHands.jsp" />
 	</definition>
+	
+	<definition name="SingleHands" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/applicationPages/SingleHands.jsp" />
+	</definition>
 
 </tiles-definitions>

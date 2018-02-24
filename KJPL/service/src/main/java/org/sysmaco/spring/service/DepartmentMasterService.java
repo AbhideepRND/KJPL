@@ -17,9 +17,9 @@ public class DepartmentMasterService {
 	@Autowired
 	private DepartmentMasterDao departmentDao;
 	
-	public List<DepartmentDto> serachAllDateList(){
+	public List<DepartmentDto> serachAllDateList(final String category){
 		List<DepartmentDto> deptDtoList = new ArrayList<DepartmentDto>();
-		List<Dept> findAll = departmentDao.findAll();
+		List<Dept> findAll = category == null ? departmentDao.findAll(): departmentDao.findByCategory(category);
 		findAll.forEach(dept -> {
 			deptDtoList.add(convertToDto(dept));
 		});

@@ -41,4 +41,9 @@ public class RequestController {
 		return "ViewHands";
 	}
 	
+	@RequestMapping(value="/SingleHands", method=RequestMethod.GET)
+	public String getSingleHands(){
+		return "SingleHands";
+	}
+	
 }

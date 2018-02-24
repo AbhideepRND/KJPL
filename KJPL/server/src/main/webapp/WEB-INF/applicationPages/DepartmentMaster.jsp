@@ -28,7 +28,7 @@
 			  <div class="form-row">
 			    <label class="col-sm-2">Unit</label>
 			    <div class="col-sm-2">
-			      <select class="form-control" id="unit" name="unit" id="updateDeptCode">
+			      <select class="form-control" id="unit" name="unit" id="unit">
                       <option value="M">Main Mill</option>
                       <option value="F">Fine Unit</option>
                   </select> 
@@ -36,7 +36,10 @@
 			    <div class="col-sm-1">&nbsp;</div>
 			    <label >Category &nbsp;</label>
 			    <div class="col-sm-3">
-			    	<input type="text" class="form-control" name="category" id="category" value="">
+			    	<select class="form-control" id="unit" name="category" id="category">
+                      <option value="P">Shift Entry</option>
+                      <option value="S">Single Hands</option>
+                  </select> 
 			    </div>
 			  </div>
 			  <br>
@@ -60,4 +63,5 @@
 </div>
 <script type="text/javascript">
 requestObject.operationName=requestObject.operationType.SAVE;
+requestObject.activePage=requestObject.pageNameList.Department;
 </script>

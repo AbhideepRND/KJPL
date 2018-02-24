@@ -1,13 +1,30 @@
 package org.sysmaco.spring.service.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /*** The persistent class for the RATE database table.* */
 @Entity
-@NamedQuery(name = "Rate.findAll", query = "SELECT r FROM Rate r")
+@NamedQueries({
+	@NamedQuery(name = "Rate.findAll", query = "SELECT r FROM Rate r"),
+	@NamedQuery(name = "Rate.OnCurrentDate", query="SELECT r FROM Rate r where r.currDate= (select max(m.currDate) from Rate m where m.currDate=:date)")	
+})
+
+
 public class Rate implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private double badly;
@@ -41,6 +58,9 @@ public class Rate implements Serializable {
 	private String updatedBy;
 	private double voucher;
 
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="rate")
+	List<Production> production;
+	
 	public Rate() {
 	}
 
@@ -171,4 +191,14 @@ public class Rate implements Serializable {
 	public void setVoucher(double voucher) {
 		this.voucher = voucher;
 	}
+	
+	public void setProduction(List<Production> production) {
+		this.production = production;
+	}
+	
+	public List<Production> getProduction() {
+		return production;
+	}
+	
+	
 }

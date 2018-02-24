@@ -17,6 +17,7 @@ public class SingleHand implements Serializable {
 
 	@Id
 	@Column(name="SHAND_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int shandId;
 
 	@Temporal(TemporalType.DATE)
@@ -28,7 +29,7 @@ public class SingleHand implements Serializable {
 
 	//bi-directional many-to-one association to Dept
 	@ManyToOne
-	@JoinColumn(name="DEPT_CODE")
+	@JoinColumn(name="DEPT_ID")
 	private Dept dept;
 
 	public SingleHand() {

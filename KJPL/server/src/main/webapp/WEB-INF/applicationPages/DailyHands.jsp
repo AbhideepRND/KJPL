@@ -5,42 +5,46 @@
         <div class="col-12">
           <h4>Hands Entry</h4>
           <p>Here you can entry/edit the hands report</p>
-          <form action="#" id="DailyHands-FormSubmit">
-          <table class="table table-inverse" id="DailyHands-FormHeader">
+          <form action="#" id="FormDailyHands">
+          <table class="table table-inverse" id="DailyHandsFormHeader">
               <tbody>
                 <tr>
                   <th>Date</th>
                   <th><input class="form-control" id="entryDate" name="entryDate" type="text"></th>
                   <th></th>
-                  <th>Production (In M/T)</th>
-                  <th>
+                  <th colspan="2">Production (In M/T)</th>
+                  <th colspan="2">
                       <input class="form-control" type="text" placeholder="Add Production Data" name="production" id="production">
                   </th>
                   <th></th>
                 </tr>
                 <tr>
                   <th>Dept-Code</th>
-                  <th>
+                  <th colspan="2">
                       <select class="form-control" id="deptCode" name="deptCode">
                       </select> 
                   </th>
                   <th>Unit</th>
-                  <th><input class="form-control" type="text" readonly></th>
-                  <th>Categoty</th>
-                  <th><input class="form-control" type="text" readonly></th>
+                  <th> 
+	                  <select class="form-control" id="unit" name="unit" id="unit" readonly>
+	                      <option value="M">Main Mill</option>
+	                      <option value="F">Fine Unit</option>
+	                  </select> 
+                  </th>
+                  <th>Category</th>
+                  <th><input class="form-control" type="text" name="category" readonly></th>
                 </tr>
                 <tr>
-                  <th>Dept-Description</th>
-                  <th colspan="2"><input class="form-control" type="text" readonly></th>
                   <th>Entry Type</th>
                   <th colspan="2">
-                       <select class="form-control" id="entryType" nam="entryType">
-                        <option value="P">Normal Hours</option>
-                        <option value="O">Over Time</option>
-                        <option value="D">Day Off</option>
-                        <option value="A">Additional O.T</option>
-                      </select> 
+                     <select class="form-control" id="entryType" name="entryType">
+                      <option value="P">Normal Hours</option>
+                      <option value="O">Over Time</option>
+                      <option value="D">Day Off</option>
+                      <option value="A">Additional O.T</option>
+                    </select> 
                   </th>
+                   <th colspan="4"></th>
                 </tr>
               </tbody>
           </table>
@@ -76,19 +80,19 @@
                   <td><input class="form-control" id="row33" name="badlyC" type="text"  value="0"></td>
                   <th><input class="form-control" id="row34" type="text" readonly></th>
                 </tr>
+                 <tr>
+                  <th scope="row">Semi Skilled (TT)</th>
+                  <td><input class="form-control" id="row51" name="semiSkilledA" type="text" value="0"></td>
+                  <td><input class="form-control" id="row52" name="semiSkilledB" type="text" value="0"></td>
+                  <td><input class="form-control" id="row53" name="semiSkilledC" type="text"  value="0"></td>
+                  <th><input class="form-control" id="row54" type="text" readonly></th>
+                </tr>
                 <tr>
                   <th scope="row">Learner (LN)</th>
                   <td><input class="form-control" id="row41" name="learnerA" type="text" value="0"></td>
                   <td><input class="form-control" id="row42" name="learnerB" type="text" value="0"></td>
                   <td><input class="form-control" id="row43" name="learnerC" type="text"  value="0"></td>
                   <th><input class="form-control" id="row44" type="text" readonly></th>
-                </tr>
-                <tr>
-                  <th scope="row">Semi Skilled (TT)</th>
-                  <td><input class="form-control" id="row51" name="semiSkilledA" type="text" value="0"></td>
-                  <td><input class="form-control" id="row52" name="semiSkilledB" type="text" value="0"></td>
-                  <td><input class="form-control" id="row53" name="semiSkilledC" type="text"  value="0"></td>
-                  <th><input class="form-control" id="row54" type="text" readonly></th>
                 </tr>
                 <tr>
                   <th scope="row">New Entrance</th>
@@ -123,7 +127,7 @@
                   <td></td>
                   <td><button class="btn btn-success btn-lg btn-block" type="button" id="submit" data-dismiss="modal">Save</button></td>
                   <td><button class="btn btn-info btn-lg btn-block" type="button" id="query" data-dismiss="modal">Query</button></td>
-                  <td><button class="btn btn-danger btn-lg btn-block" type="button" id="cancel" data-dismiss="modal">Cancel</button></td>
+                  <td><button class="btn btn-danger btn-lg btn-block" type="button" id="cancel" data-dismiss="modal" onclick="this.form.reset();" >Cancel</button></td>
                 </tr>
               </tbody>
             </table>
@@ -131,3 +135,8 @@
         </div>
       </div>
     </div>
+ </div>
+<script type="text/javascript" >
+requestObject.operationName=requestObject.operationType.SAVE;
+requestObject.activePage=requestObject.pageNameList.DailyHand;
+</script>>

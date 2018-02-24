@@ -10,7 +10,9 @@ var requestObject = {
                     		 'Date': 'Date cannot be blank',
                     		 'DateQuery': 'Please select the correct date',
                     		 'DeptCode':'Department code should be number only',
-                    		 'Operation':'Operation is wrong'
+                    		 'Operation':'Operation is wrong',
+                    		 'DepartmentQuery':'Please select the correct dept',
+                    		 'ProductionData':'Please provide valid production data'
                     	 },
                     	 success:{
                     		 'success':'Saved Data'
@@ -26,7 +28,25 @@ var requestObject = {
                      		'save':'/departmentEntry/save.json',
                      		'update':'/departmentEntry/update.json',
                      		'queryAll':'/departmentEntry/queryAll.json'
+                     	},	
+                     	DailyHand:{
+                     		'save':'/dailyHands/save.json',
+                     		'update':'/dailyHands/update.json',
+                     		'queryAll':'/dailyHands/query.json',
+                     		'productionData':'/dailyHands/production.json'
+                     	},	
+                     	SingleHand:{
+                     		'save':'/singleHands/save.json',
+                     		'update':'/singleHands/update.json',
+                     		'queryAll':'/singleHands/query.json'
                      	}	
+                     },
+                     activePage:null,
+                     pageNameList:{
+                    	 Department:"Department",
+                    	 DailyHand:"DailyHand",
+                    	 SingleHand:"SingleHand",
+                         Rate:"Rate"
                      },
                      methodType:{
                     	 POST:'post',
@@ -72,13 +92,14 @@ var requestObject = {
                     		    		alert(data.error);
                     		    		return false;
                     		    	}  else{
-                                        alert(data.success);
+                                       // alert(data.success);
                                         requestObject.responseData =data.payload;
                                         return true;
                                  }
                     		    },
                     		    error: function( jqXhr, textStatus, errorThrown ){
                     		    	alert(jqXhr.responseJSON.status + ": Please contact system administrator");
+                    		    	requestObject.responseData=null;
                     		    }
                     		});
                     	 return requestObject.responseData;

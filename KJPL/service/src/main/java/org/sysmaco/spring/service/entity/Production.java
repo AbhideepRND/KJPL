@@ -19,11 +19,12 @@ public class Production implements Serializable {
 	@Column(name="CURR_DATE")
 	private Date currDate;
 
-	@Column(name="PROD_ID")
-	private int prodId;
-
 	@Column(name="PROD_VAL")
 	private double prodVal;
+	
+	@ManyToOne
+	@JoinColumn(name="rate_id", referencedColumnName="rate_id")
+	private Rate rate;
 
 	public Production() {
 	}
@@ -36,14 +37,6 @@ public class Production implements Serializable {
 		this.currDate = currDate;
 	}
 
-	public int getProdId() {
-		return this.prodId;
-	}
-
-	public void setProdId(int prodId) {
-		this.prodId = prodId;
-	}
-
 	public double getProdVal() {
 		return this.prodVal;
 	}
@@ -52,4 +45,12 @@ public class Production implements Serializable {
 		this.prodVal = prodVal;
 	}
 
+	public void setRate(Rate rate) {
+		this.rate = rate;
+	}
+	
+	public Rate getRate() {
+		return rate;
+	}
+	
 }

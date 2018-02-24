@@ -24,7 +24,15 @@
               <a href="RateEntry.html">Rate Entry</a>
             </li>
             <li>
-              <a href="DailyHands.html">Daily Hands Entry</a>
+            	<a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Hands Entry</a>
+              		<ul class="sidenav-third-level collapse" id="collapseMulti2">
+              		<li>
+	          			<a href="DailyHands.html">Daily Hands Entry</a>		
+	          		</li>
+	          		<li>
+	          			<a href="SingleHands.html">Single Hands Entry</a>		
+	          		</li>
+              </ul>
             </li>
             <li>
               <a href="ViewHands.html">View Daily Hands</a>

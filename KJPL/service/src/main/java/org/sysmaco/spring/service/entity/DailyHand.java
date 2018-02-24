@@ -1,23 +1,75 @@
 package org.sysmaco.spring.service.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.NamedNativeQuery;
 
 /**
  * The persistent class for the DAILY_HANDS database table.
  * 
  */
 @Entity
-@Table(name="DAILY_HANDS")
-@NamedQuery(name="DailyHand.findAll", query="SELECT d FROM DailyHand d")
+@Table(name = "DAILY_HANDS")
+@NamedQuery(name = "DailyHand.findAll", query = "SELECT d FROM DailyHand d")
+@NamedNativeQuery(name = "DailyHand.summmary", query ="select"+ 		
+												" dept.dept_code as deptCode,"+
+												" sum(PERMANENTA+PERMANENTB+PERMANENTC) as tPermanent,"+
+												" sum(SPECIALBADLYA+SPECIALBADLYB+SPECIALBADLYC) as tSpecialBadly,"+
+												" sum(BADLYA+BADLYB+BADLYC) as tBadly,"+
+												" sum(LEARNERA+LEARNERB+LEARNERC) as tLearner,"+
+												" sum(SEMISKILLEDA+SEMISKILLEDB+SEMISKILLEDC) as tSemiSkilled,"+
+												" sum(NEWENTRANCEA+NEWENTRANCEB+NEWENTRANCEC) as tNewEntrance,"+
+												" sum(OUTSIDERA+OUTSIDERB+OUTSIDERC) as tOutSider,"+
+												" sum(OTHERMILLA+OTHERMILLB+OTHERMILLC) as tOtherMill,"+
+												" sum(VOUCHERRETA+VOUCHERRETB+VOUCHERRETC) as tVoucherRet,"+
+												" sum(TOTAL) AS total"+
+											" from payroll.daily_hands DHANDS"+
+												" join payroll.dept dept"+
+													" on dept.dept_id = DHANDS.dept_id"+
+											" where"+ 
+												" DHANDS.CURR_DATE between :fromDate and :toDate group by dept.dept_code order by dept.dept_code",
+											resultSetMapping= "DailyHand.summaryresultset")
+@SqlResultSetMapping(name ="DailyHand.summaryresultset",
+		classes	= @ConstructorResult(
+				targetClass=HandSummary.class,
+				columns={
+						@ColumnResult(name="deptCode"),
+						@ColumnResult(name="tPermanent"),
+						@ColumnResult(name="tSpecialBadly"),
+						@ColumnResult(name="tBadly"),
+						@ColumnResult(name="tLearner"),
+						@ColumnResult(name="tSemiSkilled"),
+						@ColumnResult(name="tNewEntrance"),
+						@ColumnResult(name="tOutSider"),
+						@ColumnResult(name="tOtherMill"),
+						@ColumnResult(name="tVoucherRet"),
+						@ColumnResult(name="total")
+				}
+		)
+)
+
 public class DailyHand implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="DHAND_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "DHAND_ID")
 	private int dhandId;
 
 	private double badlya;
@@ -27,10 +79,10 @@ public class DailyHand implements Serializable {
 	private double badlyc;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="CURR_DATE")
+	@Column(name = "CURR_DATE")
 	private Date currDate;
 
-	@Column(name="ENTRY_TYPE")
+	@Column(name = "ENTRY_TYPE")
 	private String entryType;
 
 	private double learnera;
@@ -81,9 +133,11 @@ public class DailyHand implements Serializable {
 
 	private double voucherretc;
 
-	//bi-directional many-to-one association to Dept
+	private double total;
+
+	// bi-directional many-to-one association to Dept
 	@ManyToOne
-	@JoinColumn(name="DEPT_CODE")
+	@JoinColumn(name = "DEPT_ID")
 	private Dept dept;
 
 	public DailyHand() {
@@ -335,6 +389,14 @@ public class DailyHand implements Serializable {
 
 	public void setDept(Dept dept) {
 		this.dept = dept;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
 
 }

@@ -27,7 +27,7 @@
 	<tiles:insertAttribute name="body" />
 	<tiles:insertAttribute name="footer" />    
 
- <!-- Bootstrap core JavaScript-->
+	<!-- Bootstrap core JavaScript-->
     <script src="/static/js/jquery/jquery.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
@@ -37,9 +37,6 @@
     <!-- Jquery ui -->
     <script src="/static/js/jquery/jquery-ui.js"></script>
     <script src="/static/js/app/form.js"></script>
-    
-    
-  </div>
+  
 </body>
-
 </html>

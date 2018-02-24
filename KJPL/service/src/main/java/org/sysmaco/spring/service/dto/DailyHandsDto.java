@@ -22,9 +22,12 @@ public class DailyHandsDto extends GenericDto implements Serializable {
 	private Date entryDate;
 
 	@NotNull
-	private String deptCode;
-	
+	private Integer deptCode;
+
+	@NotNull
 	private Double production;
+
+	private String deptDesc;
 
 	@NotNull
 	private String entryType;
@@ -64,11 +67,11 @@ public class DailyHandsDto extends GenericDto implements Serializable {
 		this.entryDate = entryDate;
 	}
 
-	public String getDeptCode() {
+	public Integer getDeptCode() {
 		return deptCode;
 	}
 
-	public void setDeptCode(String deptCode) {
+	public void setDeptCode(Integer deptCode) {
 		this.deptCode = deptCode;
 	}
 
@@ -295,13 +298,21 @@ public class DailyHandsDto extends GenericDto implements Serializable {
 	public void setVoucherRetC(Double voucherRetC) {
 		this.voucherRetC = voucherRetC;
 	}
-	
+
 	public Double getProduction() {
 		return production;
 	}
-	
+
 	public void setProduction(Double production) {
 		this.production = production;
+	}
+
+	public String getDeptDesc() {
+		return deptDesc;
+	}
+
+	public void setDeptDesc(String deptDesc) {
+		this.deptDesc = deptDesc;
 	}
 
 }
