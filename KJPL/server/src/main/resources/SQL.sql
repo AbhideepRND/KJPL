@@ -179,6 +179,7 @@ select * from PAYROLL.DAILY_HANDS
        		
 select 		
 			dept.dept_code,
+			count(dept.dept_code),
 			sum(PERMANENTA+PERMANENTB+PERMANENTC) as TPERMANENT,
 			sum(SPECIALBADLYA+SPECIALBADLYB+SPECIALBADLYC) as TSPECIALBADLY,
 			sum(BADLYA+BADLYB+BADLYC) as TBADLY,

@@ -12,6 +12,23 @@ import java.util.Date;
 @Entity
 @Table(name="SINGLE_HANDS")
 @NamedQuery(name="SingleHand.findAll", query="SELECT s FROM SingleHand s")
+@NamedNativeQuery(name="SingleHand.summmary", query="SELECT "+
+												" dept.dept_code deptCode,"+
+												" count(dept.dept_code) as noOfRecord,"+
+												" SUM(HANDS_VALUE) AS TOTAL"+
+											" FROM" +
+												" PAYROLL.SINGLE_HANDS SHANDS"+
+											" where" +
+												" SHANDS.CURR_DATE between :fromDate and :toDate group by dept.dept_code order by dept.dept_code",
+											resultSetMapping="SingleHand.summaryresultset")
+@SqlResultSetMapping(name ="SingleHand.summaryresultset",
+classes	= @ConstructorResult(
+		targetClass=HandSummary.class,
+		columns={
+				@ColumnResult(name="deptCode"),
+				@ColumnResult(name="noOfRecord"),
+				@ColumnResult(name="total")
+		}))
 public class SingleHand implements Serializable {
 	private static final long serialVersionUID = 1L;
 

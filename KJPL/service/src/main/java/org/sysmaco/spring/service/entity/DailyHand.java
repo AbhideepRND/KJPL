@@ -29,6 +29,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 @NamedQuery(name = "DailyHand.findAll", query = "SELECT d FROM DailyHand d")
 @NamedNativeQuery(name = "DailyHand.summmary", query ="select"+ 		
 												" dept.dept_code as deptCode,"+
+												" count(dept.dept_code) as noOfRecord,"+
 												" sum(PERMANENTA+PERMANENTB+PERMANENTC) as tPermanent,"+
 												" sum(SPECIALBADLYA+SPECIALBADLYB+SPECIALBADLYC) as tSpecialBadly,"+
 												" sum(BADLYA+BADLYB+BADLYC) as tBadly,"+
@@ -50,6 +51,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 				targetClass=HandSummary.class,
 				columns={
 						@ColumnResult(name="deptCode"),
+						@ColumnResult(name="noOfRecord"),
 						@ColumnResult(name="tPermanent"),
 						@ColumnResult(name="tSpecialBadly"),
 						@ColumnResult(name="tBadly"),
@@ -60,10 +62,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 						@ColumnResult(name="tOtherMill"),
 						@ColumnResult(name="tVoucherRet"),
 						@ColumnResult(name="total")
-				}
-		)
-)
-
+				}))
 public class DailyHand implements Serializable {
 	private static final long serialVersionUID = 1L;
 
