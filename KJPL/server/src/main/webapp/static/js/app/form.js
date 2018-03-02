@@ -334,10 +334,12 @@ $(document).ready(function(){
       		   requestObject.operationName=null;
       		   return false;
       	   }
-      	   //requestObject.operationName=requestObject.operationType.UPDATE;
+	      	 var payload = requestObject.call(requestObject.methodType.GET, 
+						requestObject.appURL.DepartmentURL[requestObject.operationType.QUERY]+"?category=P",
+						"");
       	   var selectId= parseInt($(this).val());
       	   var list=['production','deptCode','entryDate','entryType'];
-      	   $.each(requestObject.responseData, function(index, value){
+      	   $.each(payload, function(index, value){
       		   if(value.id === selectId){
       			   $('#DailyHandsFormHeader	 :input[type=text],select').each(function(index,data){
       				   if(list.indexOf($(data).attr('name')) === -1 ){
@@ -393,7 +395,7 @@ $(document).ready(function(){
        	   var payload = requestObject.call(requestObject.methodType.POST, 
        			   							requestObject.appURL.DailyHand[requestObject.operationName],
        			   							JSON.stringify(json));
-	 	  	
+	 	 requestObject.operationName=requestObject.operationType.SAVE;
 	 	  if(payload !== null){
 	 		    requestObject.operationName=requestObject.operationType.UPDATE;
 		 		$('#FormDailyHands #DailyHands-FormBody :input[type=text]').each(function(index,data){
@@ -406,8 +408,9 @@ $(document).ready(function(){
 		               }
 		               $("#"+rowNum+4).val(temp);
 		    	   });
-		 		updateButton('#FormDailyHands #submit',requestObject.operationName);
+		 		
 	 	  }
+	 	 updateButton('#FormDailyHands #submit',requestObject.operationName);
 	 	 console.log("onUpdateDailyHand");
        }
          

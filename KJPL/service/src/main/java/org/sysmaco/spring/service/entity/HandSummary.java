@@ -7,36 +7,40 @@ public class HandSummary {
 
 	private String deptCode;
 	private String deptDesc;
-	private Double tPermanent;
-	private Double tSpecialBadly;
-	private Double tBadly;
-	private Double tLearner;
-	private Double tSemiSkilled;
-	private Double tNewEntrance;
-	private Double tOutSider;
-	private Double tOtherMill;
-	private Double tVoucherRet;
-	private Double total;
+	private Double tPermanent=0d;
+	private Double tSpecialBadly=0d;
+	private Double tBadly=0d;
+	private Double tLearner=0d;
+	private Double tSemiSkilled=0d;
+	private Double tNewEntrance=0d;
+	private Double tOutSider=0d;
+	private Double tOtherMill=0d;
+	private Double tVoucherRet=0d;
+	private Double total=0d;
 	private Integer noOfRecord;
 
-	private Double cPermanent;
-	private Double cSpecialBadly;
-	private Double cBadly;
-	private Double cLearner;
-	private Double cSemiSkilled;
-	private Double cNewEntrance;
-	private Double cOutSider;
-	private Double cOtherMill;
-	private Double cVoucherRet;
-	private Double ctotal;
+	private Double cPermanent=0d;
+	private Double cSpecialBadly=0d;
+	private Double cBadly=0d;
+	private Double cLearner=0d;
+	private Double cSemiSkilled=0d;
+	private Double cNewEntrance=0d;
+	private Double cOutSider=0d;
+	private Double cOtherMill=0d;
+	private Double cVoucherRet=0d;
+	private Double ctotal=0d;
 	
-	private Double ptotal;
+	private Double ptotal=0d;
 
+	public HandSummary(String deptCode) {
+		this.group = Integer.parseInt(deptCode.substring(0, 2));
+		this.subGroup = Integer.parseInt(deptCode.substring(2, 4));
+		this.deptCode = deptCode;
+	}
+	
 	public HandSummary(String deptCode, Integer noOfRecord, Double tPermanent, Double tSpecialBadly, Double tBadly,
 			Double tLearner, Double tSemiSkilled, Double tNewEntrance, Double tOutSider, Double tOtherMill,
 			Double tVoucherRet, Double total) {
-		super();
-
 		this.group = Integer.parseInt(deptCode.substring(0, 2));
 		this.subGroup = Integer.parseInt(deptCode.substring(2, 4));
 		this.deptCode = deptCode;
@@ -54,7 +58,6 @@ public class HandSummary {
 	}
 
 	public HandSummary(String deptCode, Integer noOfRecord, Double total) {
-		super();
 		this.group = Integer.parseInt(deptCode.substring(0, 2));
 		this.subGroup = Integer.parseInt(deptCode.substring(2, 4));
 		this.deptCode = deptCode;

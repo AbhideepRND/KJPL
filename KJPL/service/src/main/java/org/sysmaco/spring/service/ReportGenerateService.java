@@ -14,7 +14,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.sysmaco.spring.service.dao.DailyHandsDao;
 import org.sysmaco.spring.service.dao.ProductionDao;
-import org.sysmaco.spring.service.dao.RateEntryDao;
 import org.sysmaco.spring.service.dao.SingleHandDao;
 import org.sysmaco.spring.service.entity.DailyHand;
 import org.sysmaco.spring.service.entity.HandSummary;
@@ -34,9 +33,6 @@ public class ReportGenerateService {
 	
 	@Autowired
 	private ProductionDao productionDao;
-	
-	@Autowired
-	private RateEntryDao rateDao;
 	
 	@Autowired
 	private SingleHandDao singleDao;
@@ -87,7 +83,7 @@ public class ReportGenerateService {
 		
 		dailyHandCurrDate.forEach(entity->{
 			final HandSummary handSummary = handSumMap.get(entity.getDept().getDeptCode());
-			handSummary.initializeDailyCurrentHands(entity.getDept().getDescription(),
+					handSummary.initializeDailyCurrentHands(entity.getDept().getDescription(),
 					entity.getPermanenta()+entity.getPermanentb()+entity.getPermanentc(),
 					entity.getSpecialbadlya()+entity.getSpecialbadlyb()+entity.getSpecialbadlyc(),
 					entity.getBadlya()+entity.getBadlyb()+entity.getBadlyc(),
@@ -103,17 +99,32 @@ public class ReportGenerateService {
 		
 		dailyHandPrevDate.forEach(entity->{
 			final HandSummary handSummary = handSumMap.get(entity.getDept().getDeptCode());
-			handSummary.initializeDailyPreviousDayHands(entity.getTotal());
+				if(handSummary != null){
+					handSummary.initializeDailyPreviousDayHands(entity.getTotal());
+				} else{
+					HandSummary newhandSummary = new HandSummary(entity.getDept().getDeptCode());
+					newhandSummary.initializeDailyPreviousDayHands(entity.getTotal());
+					handSumMap.put(newhandSummary.getDeptCode(),newhandSummary);
+				}
 			});
 		
 		singleHandCurrDate.forEach(entity->{
 			final HandSummary handSummary = handSumMap.get(entity.getDept().getDeptCode());
-			handSummary.initializeSingleCurrentHands(entity.getDept().getDescription(),entity.getHandValue());
+			if(handSummary != null){
+				handSummary.initializeSingleCurrentHands(entity.getDept().getDescription(),entity.getHandValue());
+				
+			}
 		});
 		
 		singleHandPrevDate.forEach(entity->{
 			final HandSummary handSummary = handSumMap.get(entity.getDept().getDeptCode());
-			handSummary.initializeSinglePrevoiusDayHands(entity.getHandValue());
+			if(handSummary != null){
+				handSummary.initializeSinglePrevoiusDayHands(entity.getHandValue());
+			}else{
+				HandSummary newhandSummary = new HandSummary(entity.getDept().getDeptCode());
+				newhandSummary.initializeSingleCurrentHands(entity.getDept().getDescription(),entity.getHandValue());
+				handSumMap.put(newhandSummary.getDeptCode(),newhandSummary);
+			}
 		});
 		
 		if(!dailyHandSummary.isEmpty()){
