@@ -17,4 +17,5 @@ public interface DailyHandsDao extends JpaRepository<DailyHand, Integer>{
 
 	@Query(name = "DailyHand.summmary")
 	public List<HandSummary> retrieveHandSummary(@Param("fromDate") Date fromDate, @Param("toDate") Date toDate);
+	
 }

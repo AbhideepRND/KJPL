@@ -17,6 +17,7 @@ import org.sysmaco.spring.service.entity.Dept;
 import org.sysmaco.spring.service.entity.Production;
 import org.sysmaco.spring.service.entity.Rate;
 import org.sysmaco.spring.service.entity.SingleHand;
+import org.sysmaco.spring.service.util.ApplicationException;
 import org.sysmaco.spring.service.util.ErrorMessage;
 
 @Service
@@ -40,7 +41,7 @@ public class SingleHandsService {
 		Dept findByDeptCode = deptDao.findByDeptId(singleHandDto.getDeptCode());
 		
 		if(findByDeptCode == null){
-			throw new RuntimeException(ErrorMessage.DEPT_DATA);
+			throw new ApplicationException(ErrorMessage.DEPT_DATA);
 		}
 		
 		entity.setDept(findByDeptCode);
@@ -67,13 +68,13 @@ public class SingleHandsService {
 	public SingleHandDto updateData(SingleHandDto singleHandDto){
 		final SingleHand entity = singleDao.findByCurrDateAndDeptDeptId(singleHandDto.getEntryDate(), singleHandDto.getDeptCode());
 		if(entity == null){
-			throw new RuntimeException(ErrorMessage.SINGLE_HANDS_DATA);
+			throw new ApplicationException(ErrorMessage.SINGLE_HANDS_DATA);
 		}
 		entity.setHandValue(singleHandDto.getHandValue());
 		
 		Production production = productionDao.findByCurrDate(singleHandDto.getEntryDate());
 		if(production == null){
-			throw new RuntimeException(ErrorMessage.PRODUCTION_DATA);
+			throw new ApplicationException(ErrorMessage.PRODUCTION_DATA);
 		}
 		production.setProdVal(singleHandDto.getProduction());
 		productionDao.save(production);
@@ -85,7 +86,7 @@ public class SingleHandsService {
 	public SingleHandDto retrieveByDateAndDept(SingleHandDto singleHandDto){
 		final SingleHand entity = singleDao.findByCurrDateAndDeptDeptId(singleHandDto.getEntryDate(), singleHandDto.getDeptCode());
 		if(entity == null){
-			throw new RuntimeException(ErrorMessage.SINGLE_HANDS_DATA);
+			throw new ApplicationException(ErrorMessage.SINGLE_HANDS_DATA);
 		}
 		singleHandDto.setHandValue(entity.getHandValue());
 		return singleHandDto;
@@ -94,7 +95,7 @@ public class SingleHandsService {
 	public List<SingleHandDto> retrieveByDate(Date date){
 		final List<SingleHand> entity = singleDao.findByCurrDate(date);
 		if(entity.isEmpty()){
-			throw new RuntimeException(ErrorMessage.SINGLE_HANDS_DATA);
+			throw new ApplicationException(ErrorMessage.SINGLE_HANDS_DATA);
 		}
 		List<SingleHandDto> singleHandList = new ArrayList<SingleHandDto>();
 		entity.forEach(e->{

@@ -29,6 +29,10 @@ public class RateEntryService {
 		rate.setOutsider(rateDto.getOutsider());
 		rate.setSemiSkilled(rateDto.getSemiSkilled());
 		rate.setVoucher(rateDto.getVoucherRet());
+		rate.setAgencyDurwan(rateDto.getAgencyDurwan());
+		rate.setStaff(rateDto.getStaff());
+		rate.setFngswg(rateDto.getFngswg());
+		rate.setJuteSelection(rateDto.getJuteSelection());
 		rateDao.save(rate);
 		rateDto.setId(rate.getRateId());
 		return rateDto;
@@ -47,6 +51,10 @@ public class RateEntryService {
 		rate.setOutsider(rateDto.getOutsider());
 		rate.setSemiSkilled(rateDto.getSemiSkilled());
 		rate.setVoucher(rateDto.getVoucherRet());
+		rate.setAgencyDurwan(rateDto.getAgencyDurwan());
+		rate.setStaff(rateDto.getStaff());
+		rate.setFngswg(rateDto.getFngswg());
+		rate.setJuteSelection(rateDto.getJuteSelection());
 		rateDao.save(rate);
 		return rateDto;
 	}
@@ -77,6 +85,10 @@ public class RateEntryService {
 		rateEntryDto.setOutsider(rate.getOutsider());
 		rateEntryDto.setSemiSkilled(rate.getSemiSkilled());
 		rateEntryDto.setVoucherRet(rate.getVoucher());
+		rateEntryDto.setAgencyDurwan(rate.getAgencyDurwan());
+		rateEntryDto.setStaff(rate.getStaff());
+		rateEntryDto.setFngswg(rate.getFngswg());
+		rateEntryDto.setJuteSelection(rate.getJuteSelection());
 		return rateEntryDto;
 	}
 	

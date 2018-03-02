@@ -19,11 +19,8 @@ import javax.persistence.TemporalType;
 
 /*** The persistent class for the RATE database table.* */
 @Entity
-@NamedQueries({
-	@NamedQuery(name = "Rate.findAll", query = "SELECT r FROM Rate r"),
-	@NamedQuery(name = "Rate.OnCurrentDate", query="SELECT r FROM Rate r where r.currDate= (select max(m.currDate) from Rate m where m.currDate=:date)")	
-})
-
+@NamedQueries({ @NamedQuery(name = "Rate.findAll", query = "SELECT r FROM Rate r"),
+		@NamedQuery(name = "Rate.OnCurrentDate", query = "SELECT r FROM Rate r where r.currDate= (select max(m.currDate) from Rate m where m.currDate<=:date)") })
 
 public class Rate implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -58,9 +55,19 @@ public class Rate implements Serializable {
 	private String updatedBy;
 	private double voucher;
 
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="rate")
+	@Column(name = "STAFF")
+	private double staff;
+
+	@Column(name = "AGENCY_DURWAN")
+	private double agencyDurwan;
+	@Column(name = "JUTE_SELECTION")
+	private double juteSelection;
+	@Column(name = "FNG_SWG")
+	private double fngswg;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "rate")
 	List<Production> production;
-	
+
 	public Rate() {
 	}
 
@@ -191,14 +198,45 @@ public class Rate implements Serializable {
 	public void setVoucher(double voucher) {
 		this.voucher = voucher;
 	}
-	
+
 	public void setProduction(List<Production> production) {
 		this.production = production;
 	}
-	
+
 	public List<Production> getProduction() {
 		return production;
 	}
-	
-	
+
+	public double getStaff() {
+		return staff;
+	}
+
+	public void setStaff(double staff) {
+		this.staff = staff;
+	}
+
+	public double getAgencyDurwan() {
+		return agencyDurwan;
+	}
+
+	public void setAgencyDurwan(double agencyDurwan) {
+		this.agencyDurwan = agencyDurwan;
+	}
+
+	public double getJuteSelection() {
+		return juteSelection;
+	}
+
+	public void setJuteSelection(double juteSelection) {
+		this.juteSelection = juteSelection;
+	}
+
+	public double getFngswg() {
+		return fngswg;
+	}
+
+	public void setFngswg(double fngswg) {
+		this.fngswg = fngswg;
+	}
+
 }

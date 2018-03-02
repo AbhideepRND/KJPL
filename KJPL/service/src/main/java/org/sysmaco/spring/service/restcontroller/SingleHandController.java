@@ -1,8 +1,6 @@
 package org.sysmaco.spring.service.restcontroller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.sysmaco.spring.service.SingleHandsService;
 import org.sysmaco.spring.service.dto.MessageResponse;
 import org.sysmaco.spring.service.dto.SingleHandDto;
+import org.sysmaco.spring.service.util.ApplicationUtil;
 
 @RestController
 @RequestMapping("/singleHands")
@@ -25,11 +24,9 @@ public class SingleHandController {
 	@Autowired
 	private SingleHandsService singleHand;
 	
-	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-	
 	@RequestMapping(value = "/query", method = RequestMethod.GET, produces = { "application/json" })
 	public ResponseEntity<MessageResponse<List<SingleHandDto>>> queryData(@PathParam("date") String date) throws ParseException {
-		List<SingleHandDto> dailyHandList = singleHand.retrieveByDate(format.parse(date));
+		List<SingleHandDto> dailyHandList = singleHand.retrieveByDate(ApplicationUtil.DateFormat.parse(date));
 		MessageResponse<List<SingleHandDto>> messageResponse = new MessageResponse<List<SingleHandDto>>();
 		messageResponse.setPayload(dailyHandList);
 		messageResponse.addSuccess("Success Full");

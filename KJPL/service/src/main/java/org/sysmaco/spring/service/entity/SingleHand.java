@@ -15,9 +15,11 @@ import java.util.Date;
 @NamedNativeQuery(name="SingleHand.summmary", query="SELECT "+
 												" dept.dept_code deptCode,"+
 												" count(dept.dept_code) as noOfRecord,"+
-												" SUM(HANDS_VALUE) AS TOTAL"+
+												" SUM(SHANDS.HAND_VALUE) AS TOTAL"+
 											" FROM" +
 												" PAYROLL.SINGLE_HANDS SHANDS"+
+												" join payroll.dept dept"+
+												" on dept.dept_id = SHANDS.dept_id"+
 											" where" +
 												" SHANDS.CURR_DATE between :fromDate and :toDate group by dept.dept_code order by dept.dept_code",
 											resultSetMapping="SingleHand.summaryresultset")

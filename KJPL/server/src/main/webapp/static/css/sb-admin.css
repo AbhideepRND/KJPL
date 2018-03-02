@@ -375,6 +375,9 @@ table.table-expandable > tbody > tr div.table-expandable-arrow.up {
 	display:none;
 }
 
+#Excelreport {
+	display:none;
+}
 #updateDeptDiv {
 	display:none;
 }

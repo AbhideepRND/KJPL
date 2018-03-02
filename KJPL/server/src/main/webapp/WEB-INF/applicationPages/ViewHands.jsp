@@ -19,7 +19,7 @@
       	<div class="col-2 col-sm-2 col-md-2">Production :-</div>
         <div class="col-2 col-sm-3 col-md-2"><span id="production"></span>&nbsp;<span>(M/T)</span></div>
         <div class="col-2 col-sm-3 col-md-8">
-        <span class="float-right" ><img style="height: 35px;width: 35px;" src="/static/img/pdf_image.png" alt="..." class="img-thumbnail"></span>
+        <span class="float-right" ><img style="height: 35px;width: 35px;" id="Excelreport" src="/static/img/Excel_image.png" alt="..." class="img-thumbnail" ></span>
         </div>
       </div>
       <br>

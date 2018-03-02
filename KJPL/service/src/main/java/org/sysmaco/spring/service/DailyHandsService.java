@@ -18,6 +18,7 @@ import org.sysmaco.spring.service.entity.DailyHand;
 import org.sysmaco.spring.service.entity.Dept;
 import org.sysmaco.spring.service.entity.Production;
 import org.sysmaco.spring.service.entity.Rate;
+import org.sysmaco.spring.service.util.ApplicationException;
 import org.sysmaco.spring.service.util.ErrorMessage;
 
 @Service
@@ -41,11 +42,11 @@ public class DailyHandsService {
 		final Production production = productionDao.findByCurrDate(date);
 		
 		if(findAll.isEmpty()){
-			throw new RuntimeException(ErrorMessage.DAILY_HAND_DATA);
+			throw new ApplicationException(ErrorMessage.DAILY_HAND_DATA);
 		}
 		
 		if(production == null){
-			throw new RuntimeException(ErrorMessage.PRODUCTION_DATA);
+			throw new ApplicationException(ErrorMessage.PRODUCTION_DATA);
 		}
 		
 		findAll.forEach(entity -> {
@@ -57,7 +58,7 @@ public class DailyHandsService {
 	public DailyHandsDto serachByCurrDateAndEntryTypeAndDeptDeptId(DailyHandsDto dto){
 		DailyHand entity = dailyHandDao.findByCurrDateAndEntryTypeAndDeptDeptId(dto.getEntryDate(), dto.getEntryType(), dto.getDeptCode());
 		if(entity == null){
-			throw new RuntimeException(ErrorMessage.DAILY_HAND_DATA);
+			throw new ApplicationException(ErrorMessage.DAILY_HAND_DATA);
 		}
 		return convertToDto(entity, dto.getProduction());
 	}
@@ -68,12 +69,11 @@ public class DailyHandsService {
 		Dept findByDeptCode = deptDao.findByDeptId(dailyHandsDto.getDeptCode());
 		
 		if(findByDeptCode == null){
-			throw new RuntimeException(ErrorMessage.DEPT_DATA);
+			throw new ApplicationException(ErrorMessage.DEPT_DATA);
 		}
 		entity.setDept(findByDeptCode);
 		entity.setCurrDate(dailyHandsDto.getEntryDate());
 		entity.setEntryType(dailyHandsDto.getEntryType());
-		//findByDeptCode.getDailyHands().add(entity);
 		
 		
 		Production production = productionDao.findByCurrDate(dailyHandsDto.getEntryDate());
@@ -99,11 +99,11 @@ public class DailyHandsService {
 		Production production = productionDao.findByCurrDate(dailyHandsDto.getEntryDate());
 		
 		if(entity == null){
-			throw new RuntimeException(ErrorMessage.DAILY_HAND_DATA);
+			throw new ApplicationException(ErrorMessage.DAILY_HAND_DATA);
 		}
 		
 		if(production == null){
-			throw new RuntimeException(ErrorMessage.PRODUCTION_DATA);
+			throw new ApplicationException(ErrorMessage.PRODUCTION_DATA);
 		}
 		
 		dailyHandDao.save(convertToEnity(entity, dailyHandsDto));

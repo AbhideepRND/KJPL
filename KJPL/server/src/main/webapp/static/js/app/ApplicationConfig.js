@@ -20,25 +20,28 @@ var requestObject = {
                      },
                      appURL:{
                      	RateEntry:{
-                     		'save':'/rateEntry/save.json',
-                     		'update':'/rateEntry/update.json',
-                     		'queryAll':'/rateEntry/queryAll.json'
+                     		'Save':'/rateEntry/save.json',
+                     		'Update':'/rateEntry/update.json',
+                     		'QueryAll':'/rateEntry/queryAll.json'
                      	},
                      	DepartmentURL:{
-                     		'save':'/departmentEntry/save.json',
-                     		'update':'/departmentEntry/update.json',
-                     		'queryAll':'/departmentEntry/queryAll.json'
+                     		'Save':'/departmentEntry/save.json',
+                     		'Update':'/departmentEntry/update.json',
+                     		'QueryAll':'/departmentEntry/queryAll.json'
                      	},	
                      	DailyHand:{
-                     		'save':'/dailyHands/save.json',
-                     		'update':'/dailyHands/update.json',
-                     		'queryAll':'/dailyHands/query.json',
-                     		'productionData':'/dailyHands/production.json'
+                     		'Save':'/dailyHands/save.json',
+                     		'Update':'/dailyHands/update.json',
+                     		'QueryAll':'/dailyHands/query.json',
+                     		'ProductionData':'/dailyHands/production.json'
                      	},	
                      	SingleHand:{
-                     		'save':'/singleHands/save.json',
-                     		'update':'/singleHands/update.json',
-                     		'queryAll':'/singleHands/query.json'
+                     		'Save':'/singleHands/save.json',
+                     		'Update':'/singleHands/update.json',
+                     		'QueryAll':'/singleHands/query.json'
+                     	},
+                     	Report:{
+                     		'DailyHands':'/report/dailyHands.json',
                      	}	
                      },
                      activePage:null,
@@ -53,9 +56,9 @@ var requestObject = {
                     	 GET:'get'
                      },
                      operationType:{
-                    	 SAVE:'save',
-                    	 UPDATE:'update',
-                    	 QUERY:'queryAll',
+                    	 SAVE:'Save',
+                    	 UPDATE:'Update',
+                    	 QUERY:'QueryAll',
                     	 CANCEL:'cancel'
                      },                     
                      requestData:null,
@@ -90,6 +93,7 @@ var requestObject = {
                     		    success: function( data, textStatus, jQxhr ){
                     		    	if(data.error !== null){
                     		    		alert(data.error);
+                    		    		requestObject.responseData="";
                     		    		return false;
                     		    	}  else{
                                        // alert(data.success);
@@ -98,11 +102,19 @@ var requestObject = {
                                  }
                     		    },
                     		    error: function( jqXhr, textStatus, errorThrown ){
-                    		    	alert(jqXhr.responseJSON.status + ": Please contact system administrator");
+                    		    	if(jqXhr.status === 400){
+                    		    		var msg;
+                    		    		$.each(jqXhr.responseJSON.error, function(index,val){
+                    		    			msg=val+"\n";
+                    		    		})
+                    		    		alert(jqXhr.status + ":"+ msg);
+                    		    	} else{
+                    		    		alert(jqXhr.status + ": Please contact system administrator");
+                    		    	}
+                    		    	
                     		    	requestObject.responseData=null;
                     		    }
                     		});
                     	 return requestObject.responseData;
                      }
-                     
        };

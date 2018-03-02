@@ -6,6 +6,7 @@ public class HandSummary {
 	private Integer subGroup;
 
 	private String deptCode;
+	private String deptDesc;
 	private Double tPermanent;
 	private Double tSpecialBadly;
 	private Double tBadly;
@@ -28,6 +29,8 @@ public class HandSummary {
 	private Double cOtherMill;
 	private Double cVoucherRet;
 	private Double ctotal;
+	
+	private Double ptotal;
 
 	public HandSummary(String deptCode, Integer noOfRecord, Double tPermanent, Double tSpecialBadly, Double tBadly,
 			Double tLearner, Double tSemiSkilled, Double tNewEntrance, Double tOutSider, Double tOtherMill,
@@ -59,11 +62,11 @@ public class HandSummary {
 		this.total = total;
 	}
 	
-	public void initializeDailyCurrentHands(Double cPermanent, Double cSpecialBadly, Double cBadly, Double cLearner,
+	public void initializeDailyCurrentHands(String deptDesc, Double cPermanent, Double cSpecialBadly, Double cBadly, Double cLearner,
 			Double cSemiSkilled, Double cNewEntrance, Double cOutSider, Double cOtherMill, Double cVoucherRet,
-			Double ctotal, Integer record) {
+			Double ctotal) {
 
-		this.noOfRecord = this.noOfRecord + record;
+		this.deptDesc = deptDesc;
 		this.cPermanent = cPermanent;
 		this.cSpecialBadly = cSpecialBadly;
 		this.cBadly = cBadly;
@@ -75,10 +78,18 @@ public class HandSummary {
 		this.cVoucherRet = cVoucherRet;
 		this.ctotal = ctotal;
 	}
+	
+	public void initializeDailyPreviousDayHands(Double ptotal) {
+		this.ptotal = ptotal;
+	}
 
-	public void initializeSingleCurrentHands(Double ctotal,Integer record) {
-		this.noOfRecord = this.noOfRecord + record;;
+	public void initializeSingleCurrentHands(String deptDesc,Double ctotal) {
+		this.deptDesc=deptDesc;
 		this.ctotal = ctotal;
+	}
+	
+	public void initializeSinglePrevoiusDayHands(Double ptotal) {
+		this.ptotal = ptotal;
 	}
 
 	public String getDeptCode() {
@@ -176,5 +187,18 @@ public class HandSummary {
 	public Double getCtotal() {
 		return ctotal;
 	}
+	
+	public String getDeptDesc() {
+		return deptDesc;
+	}
 
+	public Double getPtotal() {
+		return ptotal;
+	}
+
+	public void setPtotal(Double ptotal) {
+		this.ptotal = ptotal;
+	}
+	
+	
 }

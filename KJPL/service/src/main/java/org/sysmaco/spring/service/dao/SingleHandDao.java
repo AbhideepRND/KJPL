@@ -15,7 +15,7 @@ public interface SingleHandDao extends JpaRepository<SingleHand, Integer>{
 	
 	public SingleHand findByCurrDateAndDeptDeptId(Date currDate, Integer deptId);
 	
-	@Query(name = "SingleHand.summaryresultset")
+	@Query(name = "SingleHand.summmary")
 	public List<HandSummary> retrieveHandSummary(@Param("fromDate") Date fromDate, @Param("toDate") Date toDate);
 	
 }

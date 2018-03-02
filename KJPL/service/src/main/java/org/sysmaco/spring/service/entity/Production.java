@@ -1,8 +1,18 @@
 package org.sysmaco.spring.service.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -10,7 +20,8 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Production.findAll", query="SELECT p FROM Production p")
+@NamedQueries ({@NamedQuery(name="Production.findPrevDate", query="SELECT p.currDate FROM Production p where p.currDate<=:toDate order by p.currDate desc"),
+				@NamedQuery(name="Production.sumOfProduction", query="SELECT sum(p.prodVal) FROM Production p where p.currDate between :fromDate and :toDate")})
 public class Production implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +33,7 @@ public class Production implements Serializable {
 	@Column(name="PROD_VAL")
 	private double prodVal;
 	
-	@ManyToOne
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="rate_id", referencedColumnName="rate_id")
 	private Rate rate;
 

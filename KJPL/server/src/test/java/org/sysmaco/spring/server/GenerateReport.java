@@ -1,18 +1,18 @@
 package org.sysmaco.spring.server;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.ParseException;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.sysmaco.spring.service.DailyHandsService;
-import org.sysmaco.spring.service.dao.DailyHandsDao;
-import org.sysmaco.spring.service.entity.HandSummary;
+import org.sysmaco.spring.service.ReportGenerateService;
+import org.sysmaco.spring.service.util.ApplicationUtil;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -20,21 +20,14 @@ import org.sysmaco.spring.service.entity.HandSummary;
 public class GenerateReport {
 
 	@Autowired
-	private DailyHandsService dailyService;
-	
-	@Autowired
-	private DailyHandsDao dailyHandDao;
+	private ReportGenerateService report;
 	
 	@Test
-	public void readData(){
+	public void readData() throws FileNotFoundException, IOException, ParseException{
 	
-		Calendar instance = Calendar.getInstance();
 		
-		instance.add(Calendar.DATE, -3);
-		
-		List<HandSummary> retrieveHandSummary = dailyHandDao.retrieveHandSummary(instance.getTime(), new Date());
-		
-		Assert.assertNotEquals(0, retrieveHandSummary.size());
+		FileOutputStream fileOutputStream = new FileOutputStream(new File("/home/liveyoung/Project/KJPL Project/KJPL/KJPL/DailyHands2.xls"));
+		report.generateDailyHandsReportSummary(ApplicationUtil.DateFormat.parse("25/02/2018"), fileOutputStream);
 		
 	}
 	

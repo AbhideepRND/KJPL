@@ -59,6 +59,22 @@
 	                  <th scope="row">Voucher/Retired</th>
 	                  <td><input class="form-control" id="voucherRet" style="width: 12%" name="voucherRet" type="text" value="0" ></td>
 	                </tr>
+	                <tr>
+	                  <th scope="row">Staff</th>
+	                  <td><input class="form-control" id="staff" style="width: 12%" name="staff" type="text" value="0" ></td>
+	                </tr>
+	                <tr>
+	                  <th scope="row">Agency Durwan</th>
+	                  <td><input class="form-control" id="agencyDurwan" style="width: 12%" name="agencyDurwan" type="text" value="0" ></td>
+	                </tr>
+	                <tr>
+	                  <th scope="row">Jute & Selection</th>
+	                  <td><input class="form-control" id="juteSelection" style="width: 12%" name="juteSelection" type="text" value="0" ></td>
+	                </tr>
+	                <tr>
+	                  <th scope="row">FNG-SWG-PKG</th>
+	                  <td><input class="form-control" id="fngswg" style="width: 12%" name="fngswg" type="text" value="0" ></td>
+	                </tr>
 	              </tbody>
 	            </table>
 	            <div class="row">

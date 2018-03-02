@@ -127,7 +127,7 @@
                   <td></td>
                   <td><button class="btn btn-success btn-lg btn-block" type="button" id="submit" data-dismiss="modal">Save</button></td>
                   <td><button class="btn btn-info btn-lg btn-block" type="button" id="query" data-dismiss="modal">Query</button></td>
-                  <td><button class="btn btn-danger btn-lg btn-block" type="button" id="cancel" data-dismiss="modal" onclick="this.form.reset();" >Cancel</button></td>
+                  <td><button class="btn btn-danger btn-lg btn-block" type="button" id="cancel" data-dismiss="modal" >Cancel</button></td>
                 </tr>
               </tbody>
             </table>
